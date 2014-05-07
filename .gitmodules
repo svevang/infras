@@ -1,0 +1,3 @@
+[submodule "engines/open-world-server"]
+	path = engines/open-world-server
+	url = git@github.com:svevang/open-world-server.git
