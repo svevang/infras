@@ -2,3 +2,11 @@
   HomeController#home
 %p
   Find me in app/views/home_controller/home.html.erb
+
+#map
+:javascript
+  var map = L.map('map').setView({lon: -66.5, lat: 18.25}, 10);
+  // add an OpenStreetMap tile layer
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
