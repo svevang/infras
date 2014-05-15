@@ -6,6 +6,7 @@ gem 'pg'
 gem 'activerecord-postgis-adapter'
 gem 'rgeo'
 gem 'rgeo-shapefile'
+gem 'rgeo-geojson'
 
 gem 'sass-rails', '~> 4.0.3'
 gem 'haml-rails'
@@ -23,3 +24,4 @@ group :development, :test do
 end
 
 gem 'leaflet-rails'
+gem 'underscore-rails'
