@@ -1,3 +1,9 @@
+PATH
+  remote: engines/open-world-server
+  specs:
+    open-world-server (0.0.1)
+      rails (~> 4.1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -161,6 +167,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   leaflet-rails
+  open-world-server!
   pg
   pry
   rails (= 4.1.1)
