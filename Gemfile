@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 
-gem 'rails', '4.1.1'
-gem 'open-world-server', path: "engines/open-world-server"
+gem 'rails', '4.1.7'
+gem 'open_world_server', path: "engines/open-world-server"
 
 gem 'pg'
 gem 'activerecord-postgis-adapter'
