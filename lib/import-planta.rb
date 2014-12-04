@@ -1,4 +1,5 @@
 require 'rgeo/shapefile'
+require 'rgeo/geo_json'
 require 'pry'
 require 'json'
 
@@ -52,11 +53,17 @@ WKT
 
         aee_ids = attributes['AEE_NPROY']
 
+        Planta.where(aee_nproy: record.attributes["AEE_NPROY"]).each do |planta|
+          planta.destroy
+        end
+
+        json_point = ows_point = RGeo::GeoJSON.encode(projected_point)
+        ows_point = OpenWorldServer::OwsPoint.where(point: projected_point.as_text).first_or_create(point: json_point)
         model_attributes = {aee_nproy: aee_ids['AEE_NPROY'],
                             globalid: aee_ids['GlobalID'],
-                             location: projected_point}
-        puts model_attributes
-        planta = Planta.where(aee_nproy: record.attributes["AEE_NPROY"]).first_or_create(model_attributes)
+                            ows_point: ows_point}
+
+        planta = Planta.create(model_attributes)
         if planta.persisted?
           count += 1
         else

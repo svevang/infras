@@ -2,7 +2,10 @@ PATH
   remote: engines/open-world-server
   specs:
     open_world_server (0.0.1)
+      activerecord-postgis-adapter
+      pg
       rails (~> 4.1.7)
+      rgeo-geojson
 
 GEM
   remote: https://rubygems.org/

@@ -11,22 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140515152502) do
+ActiveRecord::Schema.define(version: 20141204164152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
+
+  create_table "open_world_server_ows_points", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.spatial  "point",      limit: {:srid=>0, :type=>"point"}
+  end
 
   create_table "planta", force: true do |t|
     t.string   "aee_nproy"
     t.string   "globalid"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.spatial  "location",   limit: {:srid=>0, :type=>"point"}
+    t.integer  "ows_point_id", null: false
   end
 
   add_index "planta", ["aee_nproy"], :name => "index_planta_on_aee_nproy", :unique => true
   add_index "planta", ["globalid"], :name => "index_planta_on_globalid", :unique => true
-  add_index "planta", ["location"], :name => "index_planta_on_location"
+  add_index "planta", ["ows_point_id"], :name => "index_planta_on_ows_point_id"
 
 end
