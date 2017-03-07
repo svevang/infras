@@ -6,6 +6,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-bower');
     grunt.loadNpmTasks('grunt-bower-concat');
     grunt.loadNpmTasks('grunt-bower-task');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
@@ -32,8 +33,10 @@ module.exports = function(grunt) {
         },
         bower_concat: {
             all: {
-                dest: 'docs/componants.js',
-                cssDest: 'docs/componants.css',
+                dest: {
+                    js: 'docs/componants.js',
+                    css: 'docs/componants.css'
+                },
                 exclude: [
                 ],
                 dependencies: {
@@ -58,8 +61,18 @@ module.exports = function(grunt) {
             bower_install: {
                 command: 'bower install'
             },
+        },
+        sass: {                              // Task
+            dist: {                            // Target
+                options: {                       // Target options
+                    style: 'expanded'
+                },
+                files: {                         // Dictionary of files
+                    'docs/app.css': 'src/app.scss',       // 'destination': 'source'
+                }
+            }
         }
     });
 
-    grunt.registerTask('default', ['babel', 'browserify', 'shell:bower_install','bower_concat']);
+    grunt.registerTask('default', ['babel', 'browserify', 'shell:bower_install','bower_concat', 'sass']);
 }

@@ -2,15 +2,21 @@
 <html>
   <head>
     <title>mapa de puerto rico</title>
-    <script type="text/javascript" src="./app.js" ></script>
-    <script type="text/javascript">
-      document.addEventListener('DOMContentLoaded', function () {
+    <script type="text/javascript" src="./componants.js" ></script>
+    <link rel="stylesheet" href="./componants.css" />
 
+    <script type="text/javascript" src="./app.js" ></script>
+    <link rel="stylesheet" href="./app.css" />
+
+    <script type="text/javascript">
+      $( document ).ready(function(){ 
+        window.installMap('map')
       })
     </script>
 
   </head>
   <body>
-    hello grunt bower etc
+    <div id="map">
+    </div>
   </body>
 </html>
