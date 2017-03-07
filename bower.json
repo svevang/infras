@@ -1,0 +1,23 @@
+{
+  "name": "infras",
+  "description": "a map of puerto rico",
+  "main": "n/a",
+  "authors": [
+    "Sam Vevang <sam.vevang@gmail.com>"
+  ],
+  "license": "All Right",
+  "homepage": "https://github.com/svevang/infras",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "leaflet": "^1.0.3",
+    "underscore": "^1.8.3"
+  }
+}
