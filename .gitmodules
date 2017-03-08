@@ -4,3 +4,6 @@
 [submodule "lib/osm-bright"]
 	path = lib/osm-bright
 	url = https://github.com/mapbox/osm-bright.git
+[submodule "docs/puerto-rico-map-tiles"]
+	path = docs/puerto-rico-map-tiles
+	url = https://github.com/svevang/puerto-rico-map-tiles.git
