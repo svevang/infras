@@ -1,3 +1,6 @@
 [submodule "lib/osm-extract-by-region"]
 	path = lib/osm-extract-by-region
 	url = https://github.com/svevang/osm-extract-by-region.git
+[submodule "lib/osm-bright"]
+	path = lib/osm-bright
+	url = https://github.com/mapbox/osm-bright.git
