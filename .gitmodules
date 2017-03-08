@@ -1,3 +1,3 @@
 [submodule "lib/osm-extract-by-region"]
 	path = lib/osm-extract-by-region
-	url = git@github.com:svevang/osm-extract-by-region.git
+	url = https://github.com/svevang/osm-extract-by-region.git
