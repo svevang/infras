@@ -2,7 +2,7 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-git submodule init && git submodule update;
+make land-polygons
 
 cd $DIR/osm-extract-by-region;
 
