@@ -8,6 +8,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-bower-task');
     grunt.loadNpmTasks('grunt-contrib-sass');
     require('load-grunt-tasks')(grunt);
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
     grunt.initConfig({
         babel: {
@@ -71,8 +73,31 @@ module.exports = function(grunt) {
                     'docs/app.css': 'src/app.scss',       // 'destination': 'source'
                 }
             }
-        }
+        },
+        watch: {
+            scripts: {
+                files: ['src/**/*'],
+                tasks: ['default'],
+                options: {
+                    spawn: false,
+                },
+            },
+        },
+        copy: {
+            image_assets: {
+                expand: true,
+                cwd: 'src',
+                src: 'icons/*',
+                dest: 'docs/',
+            },
+            html_files: {
+                expand: true,
+                cwd: 'src',
+                src: 'index.html',
+                dest: 'docs/'
+            }
+        },
     });
 
-    grunt.registerTask('default', ['babel', 'browserify', 'shell:bower_install','bower_concat', 'sass']);
+    grunt.registerTask('default', ['babel', 'browserify', 'shell:bower_install','bower_concat', 'sass', 'copy']);
 }
