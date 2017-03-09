@@ -1,3 +1,5 @@
+SHELL=/bin/bash
+
 all:
 
 land-polygons: submodules download downloads/simplified-land-polygons-complete-3857 downloads/land-polygons-split-3857 downloads/ne_10m_populated_places
@@ -5,9 +7,14 @@ land-polygons: submodules download downloads/simplified-land-polygons-complete-3
 .PHONY: osm-bright
 osm-bright:
 	cp osm-bright-configure.py osm-bright/configure.py
-	ln -sf ../../downloads osm-bright/shp
-	$(cd osm-bright; make.py build)
-	ln -sf ${PWD}/osm-bright/build/ ~/Documents/MapBox/project/OSMBright
+	ln -sf ../downloads osm-bright/shp
+	bash -c "cd osm-bright; ./make.py build; cd .."
+	mkdir -p tilemill-build
+	cp -rf osm-bright/build/* tilemill-build
+	rm -f ~/Documents/MapBox/project/OSMBright
+	ln -sf ${PWD}/tilemill-build/ ~/Documents/MapBox/project/OSMBright
+
+
 
 
 submodules:
