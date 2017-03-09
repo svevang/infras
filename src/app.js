@@ -14,24 +14,22 @@ function installMap(domId){
             'Imagery © <a href="http://mapbox.com">Mapbox</a>',
     }).addTo(map);
 
-    var myIcon = L.icon({
-        iconUrl: 'icons/power_plant.png',
-        //iconRetinaUrl: 'my-icon@2x.png',
-        iconSize: [37, 49],
-        iconAnchor: [22, 94],
-        popupAnchor: [-3, -76],
-        //shadowUrl: 'my-icon-shadow.png',
-        //shadowRetinaUrl: 'my-icon-shadow@2x.png',
-        //shadowSize: [68, 95],
-        //shadowAnchor: [22, 94]
-    });
+    $.getJSON('plantas_electricas.json')
+    .done(function(data){
+        _(data.features).map(function(feature){
+            var coords = feature.geometry.coordinates[0][0]
+            var powerPlant = new PowerPlant(feature)
 
-    L.marker([18.2294,-66.4893], {icon: myIcon}).addTo(map);
+            console.log(coords)
+            powerPlant.polygon.addTo(map)
+            powerPlant.marker.addTo(map)
+            //L.marker([coords[1], coords[0]], {icon: myIcon}).addTo(map);
+        });
 
-
-
-
-}
+        }).fail(function(){
+            console.log('Failed to fetch the power plant data');
+        });
+};
 
 window.installMap = installMap;
 

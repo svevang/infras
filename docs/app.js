@@ -12,35 +12,73 @@ function installMap(domId) {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' + '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' + 'Imagery © <a href="http://mapbox.com">Mapbox</a>'
     }).addTo(map);
 
-    var myIcon = L.icon({
-        iconUrl: 'icons/power_plant.png',
-        //iconRetinaUrl: 'my-icon@2x.png',
-        iconSize: [37, 49],
-        iconAnchor: [22, 94],
-        popupAnchor: [-3, -76]
-    });
+    $.getJSON('plantas_electricas.json').done(function (data) {
+        _(data.features).map(function (feature) {
+            var coords = feature.geometry.coordinates[0][0];
+            var powerPlant = new _power_plant.PowerPlant(feature);
 
-    L.marker([18.2294, -66.4893], { icon: myIcon }).addTo(map);
-}
+            console.log(coords);
+            powerPlant.polygon.addTo(map);
+            powerPlant.marker.addTo(map);
+            //L.marker([coords[1], coords[0]], {icon: myIcon}).addTo(map);
+        });
+    }).fail(function () {
+        console.log('Failed to fetch the power plant data');
+    });
+};
 
 window.installMap = installMap;
 
 
 },{"./power_plant":2}],2:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var PowerPlant = exports.PowerPlant = function PowerPlant(lng, lat) {
-    _classCallCheck(this, PowerPlant);
+var PowerPlant = exports.PowerPlant = function () {
+    function PowerPlant(geojson) {
+        _classCallCheck(this, PowerPlant);
 
-    this.lat = lat;
-    this.lng = lng;
-};
+        this.geojson = geojson;
+        this._polygon = L.polygon(_(this.geojson.geometry.coordinates[0]).map(function (coords) {
+            return L.latLng(coords.reverse());
+        }));
+
+        var icon = L.icon({
+            iconUrl: 'icons/power_plant.png',
+            iconSize: [37, 49],
+            iconAnchor: [22, 94],
+            popupAnchor: [-3, -76]
+        });
+        var coords = this._polygon.getBounds().getCenter();
+        this._marker = L.marker(coords, { icon: icon });
+    }
+
+    _createClass(PowerPlant, [{
+        key: 'polygon',
+        get: function get() {
+            return this._polygon;
+        }
+    }, {
+        key: 'name',
+        get: function get() {
+            return this.geojson.properties.name;
+        }
+    }, {
+        key: 'marker',
+        get: function get() {
+            return this._marker;
+        }
+    }]);
+
+    return PowerPlant;
+}();
 
 
 },{}],3:[function(require,module,exports){

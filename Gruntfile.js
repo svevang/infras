@@ -10,6 +10,7 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
     grunt.initConfig({
         babel: {
@@ -84,6 +85,12 @@ module.exports = function(grunt) {
             },
         },
         copy: {
+            json_assets: {
+                expand: true,
+                cwd: 'src',
+                src: 'plantas_electricas.json',
+                dest: 'docs/',
+            },
             image_assets: {
                 expand: true,
                 cwd: 'src',
@@ -97,7 +104,10 @@ module.exports = function(grunt) {
                 dest: 'docs/'
             }
         },
+        clean: {
+            docs: ['docs/*.*', 'docs/icons/']
+        }
     });
 
-    grunt.registerTask('default', ['babel', 'browserify', 'shell:bower_install','bower_concat', 'sass', 'copy']);
+    grunt.registerTask('default', ['clean', 'babel', 'browserify', 'shell:bower_install','bower_concat', 'sass', 'copy']);
 }
