@@ -6,17 +6,18 @@ export class PowerPlant {
         var icon = L.icon({
             iconUrl: 'icons/power_plant.png',
             iconSize: [37, 49],
-            iconAnchor: [22, 94],
-            popupAnchor: [-3, -76],
+            iconAnchor: [15, 25],
+            popupAnchor: [0, -25],
         });
         var coords = this._polygon.getBounds().getCenter();
         this._marker = L.marker(coords, {icon: icon});
+        this._marker.bindPopup(this.name)
     }
     get polygon(){
         return this._polygon;
     }
     get name(){
-        return this.geojson.properties.name;
+        return `${this.geojson.properties['CD_TYPE']}: ${this.geojson.properties['NAME']} `;
     }
 
     get marker(){
