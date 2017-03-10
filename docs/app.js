@@ -7,7 +7,8 @@ function installMap(domId) {
     var map = L.map(domId).setView([18.2554, -66.3025], 10);
 
     L.tileLayer('puerto-rico-map-tiles/tiles/{z}/{x}/{y}.png', {
-        minZoom: 8,
+        minZoom: 10,
+        maxZoom: 16,
         bounds: [[17.8183, -68.0852], [18.6010, -65.0969]],
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' + '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' + 'Imagery © <a href="http://mapbox.com">Mapbox</a>'
     }).addTo(map);
