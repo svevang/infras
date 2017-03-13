@@ -61,24 +61,24 @@ Map { font-directory: url(./fonts); }
 /* LANDUSE & LANDCOVER COLORS
 /* ================================================================== */
 
-@land:              #FCFBE7;
-@water:             #C4DFF6;
-@grass:             #E6F2C1;
-@beach:             #FFEEC7;
-@park:              #DAF2C1;
-@cemetery:          #D6DED2;
-@wooded:            #C3D9AD;
-@agriculture:       #F2E8B6;
+@land:              #c6ffaa;
+@water:             #00ccff;
+@grass:             #ccff33;
+@beach:             #ffb300;
+@park:              #84ff00;
+@cemetery:          #d7fdc3;
+@wooded:            #9cec4c;
+@agriculture:       #ffe666;
 
-@building:          #E4E0E0;
-@hospital:          rgb(229,198,195);
-@school:            #FFF5CC;
-@sports:            #B8E6B8;
+@building:          #df9797;
+@hospital:          #ff1500;
+@school:            #fff100;
+@sports:            #63ff63;
 
 @residential:       @land * 0.98;
 @commercial:        @land * 0.97;
 @industrial:        @land * 0.96;
-@parking:           #EEE;
+@parking:           #ff6969;
 
 /* ================================================================== */
 /* ROAD COLORS
@@ -93,7 +93,7 @@ Map { font-directory: url(./fonts); }
  *         inner fill (inline).
  */
 
-@motorway_line:     #E65C5C;
+@motorway_line:     #ff0000;
 @motorway_fill:     lighten(@motorway_line,10%);
 @motorway_case:     @motorway_line * 0.9;
 
@@ -101,11 +101,11 @@ Map { font-directory: url(./fonts); }
 @trunk_fill:        lighten(@trunk_line,10%);
 @trunk_case:        @trunk_line * 0.9;
 
-@primary_line:      #FFC859;
+@primary_line:      #b8b09f;
 @primary_fill:      lighten(@primary_line,10%);
 @primary_case:      @primary_line * 0.9;
 
-@secondary_line:    #FFE873;
+@secondary_line:    #fff100;
 @secondary_fill:    lighten(@secondary_line,10%);
 @secondary_case:    @secondary_line * 0.9;
 
@@ -114,18 +114,18 @@ Map { font-directory: url(./fonts); }
 @standard_case:     @land * 0.9;
 
 @pedestrian_line:   @standard_line;
-@pedestrian_fill:   #FAFAF5;
+@pedestrian_fill:   #f3f371;
 @pedestrian_case:   @land;
 
 @cycle_line:        @standard_line;
-@cycle_fill:        #FAFAF5;
+@cycle_fill:        #f3f371;
 @cycle_case:        @land;
 
 @rail_line:         #999;
 @rail_fill:         #fff;
 @rail_case:         @land;
 
-@aeroway:           #ddd;
+@aeroway:           #e26868;
 
 /* ================================================================== */
 /* BOUNDARY COLORS
