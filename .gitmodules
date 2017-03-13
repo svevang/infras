@@ -7,4 +7,3 @@
 [submodule "docs/puerto-rico-map-tiles"]
 	path = docs/puerto-rico-map-tiles
 	url = https://github.com/svevang/puerto-rico-map-tiles.git
-	ignore = dirty
