@@ -7,6 +7,7 @@ function installMap(domId) {
     var map = L.map(domId).setView([18.2554, -66.3025], 10);
 
     L.tileLayer('puerto-rico-map-tiles/tiles/{z}/{x}/{y}.png', {
+        detectRetina: false,
         minZoom: 10,
         maxZoom: 16,
         bounds: [[17.8183, -68.0852], [18.6010, -65.0969]],
